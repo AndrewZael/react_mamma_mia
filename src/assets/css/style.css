@@ -1,0 +1,8 @@
+header{
+    z-index: 1;
+}
+.bg{
+    background-repeat: repeat;
+    background-size: cover;
+    background-position: center;
+}
