@@ -14,7 +14,7 @@ const TotalValue = ({ cart = true }) => {
   const sum = () => {
     const arrTotalValuesPizza = [];
     let quantitySum = 0;
-    pizzasAdded.map(p => {
+    pizzasAdded.forEach(p => {
       const pizza = pizzas.find(pizza => pizza.id === p.id);
       arrTotalValuesPizza.push(pizza.price * p.quantity);
       quantitySum += p.quantity;
@@ -25,6 +25,7 @@ const TotalValue = ({ cart = true }) => {
 
   useEffect(() => {
      sum();
+  // eslint-disable-next-line
   }, [pizzasAdded]);
 
   return (
