@@ -33,6 +33,12 @@ function App() {
       <PizzasContext.Provider value={shareData}>
         <BrowserRouter>
             <Header />
+            <section id="banner" className="bg mb-5" title="Banner Mamma Mia!">
+              <article className="h-100 bg-black bg-opacity-50 d-flex flex-column justify-content-center align-items-center text-light">
+                <h1>¡Pizzeria Mamma Mia!</h1>
+                <p>Tenemos las mejores pizzas que podrás encontrar</p>
+              </article>
+            </section>
             <section className="mx-auto mb-5 container">
               <Routes>
                 <Route path='/' element={<Home />} />

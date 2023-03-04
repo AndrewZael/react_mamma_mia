@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import BtnAdd from '../components/BtnAdd';
+import PizzasContext from '../contexts/PizzasContext';
+import AddRemove from './AddRemove';
 
 const Card = ({ pizza }) => {
 
   const navigate = useNavigate();
+  const { pizzasAdded } = useContext(PizzasContext);
+  const [quantity, setQuantity] = useState(0);
+
+  useEffect(() => {
+     setQuantity(pizzasAdded.find(p => p.id === pizza.id)?.quantity);
+  }, [pizzasAdded, pizza.id]);
 
   return (
     <article title={`Pizza ${pizza.name.charAt().toUpperCase()}${pizza.name.slice(1)}`} 
@@ -27,11 +36,11 @@ const Card = ({ pizza }) => {
             ${pizza.price.toLocaleString(['id', 'en'])}
           </data>
 
-          <div className="d-flex justify-content-between mt-4 gap-3 p-3">
-            <button onClick={() => navigate(`/pizza/${pizza.id}`)} className="btn btn-secondary flex-fill">
+          <div className="d-flex justify-content-between align-items-center mt-4 gap-3 p-3">
+            <button onClick={() => navigate(`/pizza/${pizza.id}`)} className="btn btn-secondary w-50 text-nowrap">
               Ver más
             </button>
-            <BtnAdd pizza={pizza} />
+            <AddRemove pizza={pizza} quantity={quantity} />
           </div>
 
         </div>
