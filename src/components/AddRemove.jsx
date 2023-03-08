@@ -2,6 +2,7 @@ import React from 'react'
 import BtnAddRemove from '../components/BtnAddRemove';
 
 const AddRemove = ({ pizza, quantity }) => {
+  console.log(pizza);
   return (
     <div className="btn-group">
       <BtnAddRemove pizza={pizza} type="remove" btn="primary" textBtn="-" />
